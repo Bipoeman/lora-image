@@ -1,0 +1,164 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/24.7.17 Chrome/128.0.6613.36 Electron/32.0.1 Safari/537.36" version="24.7.17">
+  <diagram name="Page-1" id="RxpifaSIFEnqdI3cxFoo">
+    <mxGraphModel dx="2440" dy="1416" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2336" pageHeight="1654" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1" source="uQ1AQbGjtUOogvABjO_j-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="690" y="1371.142857142857" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-1" value="Transmitter" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" parent="1">
+          <mxGeometry x="630" y="300" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1" source="uQ1AQbGjtUOogvABjO_j-2">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="980" y="1357.142857142857" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-2" value="Receiver" style="rounded=1;whiteSpace=wrap;html=1;fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" parent="1">
+          <mxGeometry x="920" y="296" width="120" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-5" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="690" y="450" as="sourcePoint" />
+            <mxPoint x="980" y="480" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-6" value="Packet 0 - 99" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-5">
+          <mxGeometry x="-0.0729" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-7" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="980" y="480" as="sourcePoint" />
+            <mxPoint x="690" y="530" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-8" value="ACK 99" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-7">
+          <mxGeometry x="0.0272" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-9" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="690" y="560" as="sourcePoint" />
+            <mxPoint x="980" y="580" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-10" value="Packet 100 - 199" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-9">
+          <mxGeometry x="-0.0729" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-12" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="980" y="580" as="sourcePoint" />
+            <mxPoint x="690" y="630" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-13" value="ACK 199" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-12">
+          <mxGeometry x="0.1124" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-14" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;entryX=0.2;entryY=1.062;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" target="uQ1AQbGjtUOogvABjO_j-16">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="690" y="680" as="sourcePoint" />
+            <mxPoint x="890" y="700" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-15" value="Packet 200 - 299" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-14">
+          <mxGeometry x="-0.0729" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-16" value="Failed To Deliver" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" parent="1">
+          <mxGeometry x="880" y="670" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-19" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="780" y="700" as="sourcePoint" />
+            <mxPoint x="780" y="760" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-20" value="Timeout" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-19">
+          <mxGeometry x="0.3023" y="-1" relative="1" as="geometry">
+            <mxPoint y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-22" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="690" y="760" as="sourcePoint" />
+            <mxPoint x="980" y="780" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-23" value="Packet 200 - 299" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-22">
+          <mxGeometry x="-0.1759" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-25" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="980" y="780" as="sourcePoint" />
+            <mxPoint x="800" y="830" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-26" value="ACK 299" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-25">
+          <mxGeometry x="0.4064" y="1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-27" value="Failed To Deliver" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" parent="1">
+          <mxGeometry x="700" y="820" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-28" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="820" y="840" as="sourcePoint" />
+            <mxPoint x="820" y="900" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-29" value="Timeout" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-28">
+          <mxGeometry x="0.3023" y="-1" relative="1" as="geometry">
+            <mxPoint y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-30" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="690" y="900" as="sourcePoint" />
+            <mxPoint x="980" y="920" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-31" value="Packet 200 - 299" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-30">
+          <mxGeometry x="-0.1759" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-32" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;fontFamily=TT Rounds Neue Trial DemiBold;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="980" y="930" as="sourcePoint" />
+            <mxPoint x="690" y="970" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="uQ1AQbGjtUOogvABjO_j-33" value="ACK 299" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontFamily=TT Rounds Neue Trial DemiBold;" vertex="1" connectable="0" parent="uQ1AQbGjtUOogvABjO_j-32">
+          <mxGeometry x="0.4064" y="1" relative="1" as="geometry">
+            <mxPoint x="54" y="-9" as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

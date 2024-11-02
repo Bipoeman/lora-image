@@ -18,13 +18,14 @@ def generateFCS(data_in : bytes,poly: int = 0x1021, initial_value: int = 0xFFFF)
     # Return the FCS as 2 bytes (big-endian)
     return crc.to_bytes(2,byteorder="big")  # Little-endian is used for AX.25
 
-def encodeTx(byteInput: bytes,packetNo : int) -> bytes:
+def encodeTx(byteInput: bytes,packetNo : int,totalPacket : int) -> bytes:
     if (isinstance(byteInput,str)):
         byteInput = byteInput.encode()
     packet_num = packetNo.to_bytes(3,byteorder='big')
+    packet_total = totalPacket.to_bytes(3,byteorder='big')
     packet_length = len(byteInput).to_bytes(2,byteorder='big')
     
-    output = packet_num + packet_length + byteInput
+    output = packet_num + packet_total + packet_length + byteInput
     output += generateFCS(output)
     return output
 
@@ -48,7 +49,7 @@ with open("image.jpg",'rb') as imageFile:
         lastTime = time.time()
         index_start = frame_size * i
         index_end = (frame_size * i) + frame_size
-        transmit = encodeTx(content[index_start:index_end],i)
+        transmit = encodeTx(content[index_start:index_end],i,noOfSend)
         ser.write(transmit)
         # print(transmit)
         

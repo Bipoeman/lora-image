@@ -18,13 +18,14 @@ def generateFCS(data_in : bytes,poly: int = 0x1021, initial_value: int = 0xFFFF)
     # Return the FCS as 2 bytes (big-endian)
     return crc.to_bytes(2,byteorder="big")  # Little-endian is used for AX.25
 
-def encodeTx(byteInput: bytes,packetNo : int) -> bytes:
+def encodeTx(byteInput: bytes,packetNo : int,totalPacket : int) -> bytes:
     if (isinstance(byteInput,str)):
         byteInput = byteInput.encode()
     packet_num = packetNo.to_bytes(3,byteorder='big')
+    packet_total = totalPacket.to_bytes(3,byteorder='big')
     packet_length = len(byteInput).to_bytes(2,byteorder='big')
     
-    output = packet_num + packet_length + byteInput
+    output = packet_num + packet_total + packet_length + byteInput
     output += generateFCS(output)
     return output
 
@@ -59,15 +60,15 @@ while True:
             all_packet = total_read[:packet_len + 5]
             fcs_check = generateFCS(all_packet)
             if (fcs_check == fcs):
-                print(f"packet {packet_no} pass")
+                print(f"Packet {packet_no} pass")
                 # print(packet)
                 with open("output.jpg",'ab') as output:
                     output.write(packet)
+                reply_message = encodeTx(f"ACK{packet_no}",0)
+                ser.write(reply_message)
+                last_frame_receive = packet_no
             frame_len = 0
             total_read = b''
-            last_frame_receive = packet_no
-            reply_message = encodeTx(f"ACK{packet_no}",0)
-            ser.write(reply_message)
     else:
         reply_message = encodeTx(f"ACK{last_frame_receive}",0)
         ser.write(reply_message)

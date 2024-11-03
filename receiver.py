@@ -9,7 +9,7 @@ try:
 except:
     print("Port Not Open")
 try:
-    os.remove("output1.jpg")
+    os.remove("output1.png")
 except:
     print("File empty so not remove")
 time.sleep(1)
@@ -29,7 +29,7 @@ while True:
                 decoded = decodeTx(total_read)
                 if (not decoded["pass"]):
                     print("error, replying")
-                    reply_message = encodeTx(f"ACK{last_frame_receive}",0,1,'text')
+                    reply_message = encodeTx(f"ACK{last_frame_receive+1}",0,1,'text')
                     ser.write(reply_message)
                     total_read = b''
                 else:
@@ -38,16 +38,17 @@ while True:
                     if decoded["packet_num"] > 0 and (decoded["packet_num"] % num_packet_before_check == 0 or decoded["packet_num"] == decoded["total_packet_count"]) :
                         reply_message = encodeTx(f"ACK{last_frame_receive}",0,1,'text')
                         ser.write(reply_message)
-                    print(f"received {decoded['packet_num'] / decoded['total_packet_count'] * 100 :.2f} {last_frame_receive}%")
+                    print(f"received {decoded['packet_num'] / decoded['total_packet_count'] * 100 :.2f}% packet no {last_frame_receive}")
                     if decoded["packet_type"] == 'image':
-                        with open("output1.jpg",'ab') as file:
+                        with open("output1.png",'ab') as file:
                             file.write(decoded['packet_content'])
                     total_read = b''
             except:
                 print(total_read)
-                print(f"decode error trying to ask for {last_frame_receive} packet")
-                reply_message = encodeTx(f"ACK{last_frame_receive}",0,1,'text')
+                print(f"decode error trying to ask for {last_frame_receive+1} packet")
+                reply_message = encodeTx(f"ACK{last_frame_receive+1}",0,1,'text')
                 ser.write(reply_message)  
+                total_read = b''
                 # ser.reset_input_buffer()
                 # ser.reset_output_buffer()
                 # ser.flush()
@@ -55,8 +56,9 @@ while True:
 
     else:
         print(f"trying to ask for {last_frame_receive} packet")
-        reply_message = encodeTx(f"ACK{last_frame_receive}",0,1,'text')
+        reply_message = encodeTx(f"ACK{last_frame_receive+1}",0,1,'text')
         ser.write(reply_message)
+        total_read = b''
         # ser.reset_input_buffer()
         # ser.reset_output_buffer()
         # ser.flush()

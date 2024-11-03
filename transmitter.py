@@ -9,11 +9,11 @@ from util import *
 time.sleep(2)
 ser = Serial("COM12",baudrate=9600,timeout=2)
 
-with open("image.jpg",'rb') as imageFile:
+with open("image.png",'rb') as imageFile:
     content = imageFile.read()
     total_size = len(content)
     print(total_size)
-    frame_size = 100
+    frame_size = 200
     noOfSend = math.ceil(total_size / frame_size)
     i = 0
     lastTime = 0
@@ -59,9 +59,10 @@ with open("image.jpg",'rb') as imageFile:
                                 time.sleep(1)
                                 i = int(ack_package) - 1
                                 break
+                        else:
+                            total_read : bytes = b''   
+                            # total_read = b''
                             
-                            
-                            total_read = b''
                 else:
                     pass
         # while (ser.in_waiting > 0):

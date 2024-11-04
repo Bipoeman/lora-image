@@ -13,7 +13,7 @@ with open("image.png",'rb') as imageFile:
     content = imageFile.read()
     total_size = len(content)
     print(total_size)
-    frame_size = 200
+    frame_size = 100
     noOfSend = math.ceil(total_size / frame_size)
     i = 0
     lastTime = 0
@@ -32,12 +32,12 @@ with open("image.png",'rb') as imageFile:
             total_read : bytes = b''
             frame_len = 0
             last_frame_receive = 0
-            metaData : dict
+            ser.flush()
             while True:
                 read = ser.read()
                 if (read):
                     total_read += read
-                    # print(len(total_read))
+                    print(len(total_read))
                     if (len(total_read) == 9):
                         metaData = decodeMetaData(total_read)
                         # print("meta data decleared",total_read)
@@ -50,13 +50,13 @@ with open("image.png",'rb') as imageFile:
                             # reply_message = encodeTx(f"ACK{last_frame_receive}",0,1,'text')
                             # ser.write(reply_message)
                             ack_package = decoded["packet_content"].decode().split("ACK")[1]
-                            print(ack_package,i)
+                            # print(ack_package,i)
                             if (int(ack_package) == i):
                                 print("Check OK ✅")
                                 break
                             else:
                                 print("Reverting...")
-                                time.sleep(1)
+                                # time.sleep(1)
                                 i = int(ack_package) - 1
                                 break
                         else:
@@ -64,6 +64,7 @@ with open("image.png",'rb') as imageFile:
                             # total_read = b''
                             
                 else:
+                    total_read = b''
                     pass
         # while (ser.in_waiting > 0):
         #     print("data coming")

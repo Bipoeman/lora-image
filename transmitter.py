@@ -7,13 +7,13 @@ from util import *
     
 
 time.sleep(2)
-ser = Serial("COM12",baudrate=9600,timeout=2)
+ser = Serial("COM4",baudrate=9600,timeout=2)
 
 with open("image.png",'rb') as imageFile:
     content = imageFile.read()
     total_size = len(content)
     print(total_size)
-    frame_size = 100
+    frame_size = 50
     noOfSend = math.ceil(total_size / frame_size)
     i = 0
     lastTime = 0

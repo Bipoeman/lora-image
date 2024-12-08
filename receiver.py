@@ -3,7 +3,7 @@ from serial import *
 import os
 from util import *
 
-ser = Serial("COM11",timeout=5,baudrate=9600)
+ser = Serial("COM6",timeout=5,baudrate=9600)
 try:
     ser.close()
 except:

@@ -1,6 +1,7 @@
 import json
 from typing import Literal
-num_packet_before_check = 100
+import zlib
+num_packet_before_check = 1
 
 def generateFCS(data_in : bytes,poly: int = 0x1021, initial_value: int = 0xFFFF):
     crc = initial_value
@@ -35,7 +36,8 @@ def encodeTx(byteInput: bytes,packetNo : int,totalPacket : int,packetType : Lite
     packet_type = typeLookup[packetType].to_bytes(1,byteorder='big')
     packet_length = len(byteInput).to_bytes(2,byteorder='big')
     output = packet_num + packet_type + packet_total + packet_length + byteInput
-    output += generateFCS(output)
+    # output += generateFCS(output)
+    output += zlib.crc32(output).to_bytes(4,"big")
     return output
 
 def decodeTx(byteInput: bytes) -> dict[Literal[
@@ -57,10 +59,11 @@ def decodeTx(byteInput: bytes) -> dict[Literal[
         total_packet_count = int.from_bytes(byteInput[4:7],byteorder='big')
         packet_size = int.from_bytes(byteInput[7:9],byteorder='big')
         
-        if (len(byteInput) >= 9 + packet_size + 2):
-            packet_content = byteInput[9:-2]
-            checkFCS = generateFCS(byteInput[:-2])
-            fcs = byteInput[-2:]
+        if (len(byteInput) >= 9 + packet_size + 4):
+            packet_content = byteInput[9:-4]
+            # checkFCS = generateFCS(byteInput[:-2])
+            checkFCS = zlib.crc32(byteInput[:-4]).to_bytes(4,"big")
+            fcs = byteInput[-4:]
             # print(packet_num,packetTypeLookup[packet_type],total_packet_count,packet_size,packet_content,fcs == checkFCS)
     return {
         "packet_num" : packet_num,

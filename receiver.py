@@ -3,13 +3,14 @@ from serial import *
 import os
 from util import *
 
-ser = Serial("COM6",timeout=5,baudrate=9600)
+ser = Serial("COM8",timeout=1,baudrate=250000)
+output_file = "output1.txt"
 try:
     ser.close()
 except:
     print("Port Not Open")
 try:
-    os.remove("output1.png")
+    os.remove(output_file)
 except:
     print("File empty so not remove")
 time.sleep(1)
@@ -40,7 +41,7 @@ while True:
                         ser.write(reply_message)
                     print(f"received {decoded['packet_num'] / decoded['total_packet_count'] * 100 :.2f}% packet no {last_frame_receive}")
                     if decoded["packet_type"] == 'image':
-                        with open("output1.png",'ab') as file:
+                        with open(output_file,'ab') as file:
                             file.write(decoded['packet_content'])
                     total_read = b''
             except:

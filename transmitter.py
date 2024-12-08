@@ -7,9 +7,9 @@ from util import *
     
 
 time.sleep(2)
-ser = Serial("COM4",baudrate=9600,timeout=2)
+ser = Serial("COM9",baudrate=250000,timeout=2)
 
-with open("image.png",'rb') as imageFile:
+with open("data.txt",'rb') as imageFile:
     content = imageFile.read()
     total_size = len(content)
     print(total_size)
@@ -26,7 +26,7 @@ with open("image.png",'rb') as imageFile:
         transmit = encodeTx(content[index_start:index_end],i,noOfSend,'image')
         ser.write(transmit)
         # print(f"transmiting {i} {timeDiff :.2f} waiting {ser.in_waiting}")
-        print(f"Send Packet {i} from {noOfSend} = {index_end / total_size*100 : .3f}% time diff : {timeDiff :.2f}s")
+        print(f"Send Packet {i} from {noOfSend} = {index_end / total_size*100 : .3f}% time diff : {timeDiff :.4f}s")
         if (i > 0 and i % num_packet_before_check == 0 or i == noOfSend - 1):
             print("waiting for checking reply")
             total_read : bytes = b''

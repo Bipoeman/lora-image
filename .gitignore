@@ -85,3 +85,6 @@ ENV/
 
 # MkDocs documentation
 site*/
+
+*.jpg
+*.png

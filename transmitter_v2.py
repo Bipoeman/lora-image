@@ -27,8 +27,8 @@ with open("image.jpg",'rb') as imageFile:
         index_end = (frame_size * i) + frame_size
         transmit = encodeTx(content[index_start:index_end],i,noOfSend,'image')
         ser.write(transmit)
-        print(f"Send Packet {i + 1} from {noOfSend} = {index_end / total_size*100 : .3f}% time diff : {timeDiff :.4f}s total of {len(transmit)} bytes")
-        if (i > 0 and i % num_packet_before_check == 0 or i == noOfSend - 1):
+        print(f"Send Packet {i} from {noOfSend - 1} = {index_end / total_size*100 : .3f}% time diff : {timeDiff :.4f}s total of {len(transmit)} bytes")
+        if (i >= 0 and i % num_packet_before_check == 0 or i == noOfSend - 1):
             print("waiting for checking reply")
             total_read : bytes = b''
             frame_len = 0
@@ -43,14 +43,25 @@ with open("image.jpg",'rb') as imageFile:
                         metaData = decodeMetaData(total_read)
                     if len(total_read) > 9 and metaData and len(total_read) >= metaData["packet_size"] + 9 + 4:
                         decoded = decodeTx(total_read)
-                        # print(decoded["packet_content"])
+                        print(f"return message {decoded["packet_content"]}")
+                        ask_state = "ACK"
                         if (decoded["pass"]):
-                            ack_package = decoded["packet_content"].decode().split("ACK")[1]
-                            if (int(ack_package) == i):
-                                print("Check OK ✅")
-                                break
-                            else:
-                                print("Reverting...")
+                            if (decoded["packet_content"].decode().find("ASK") != -1):
+                                ack_package = decoded["packet_content"].decode().split("ASK")[1]
+                                ask_state = "ASK"
+                            elif (decoded["packet_content"].decode().find("ACK") != -1):
+                                ack_package = decoded["packet_content"].decode().split("ACK")[1]
+                                ask_state = "ACK"
+                            if (ask_state == "ACK"):
+                                if (int(ack_package) == i):
+                                    print("Check OK ✅")
+                                    break
+                                else:
+                                    print("Reverting...")
+                                    i = int(ack_package) - 1
+                                    break
+                            elif (ask_state == "ASK"):
+                                print("Ask Reverting...")
                                 i = int(ack_package) - 1
                                 break
                         else:
@@ -58,9 +69,11 @@ with open("image.jpg",'rb') as imageFile:
                             # total_read = b''
                             
                 else:
-                    total_read = b''
-                    pass
+                    print("No ACK received, retrying...")
+                    i = max(-1, i - 1)  # Retry the last packet
+                    break
         i+=1
+        
     print(f"Total Time {time.time() - startTime : .2f}s")
 
 

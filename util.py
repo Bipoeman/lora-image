@@ -3,22 +3,6 @@ from typing import Literal
 import zlib
 num_packet_before_check = 1
 
-def generateFCS(data_in : bytes,poly: int = 0x1021, initial_value: int = 0xFFFF):
-    crc = initial_value
-    for byte in data_in:
-        crc ^= byte << 8  # Move byte to upper 8 bits of crc
-        for _ in range(8):  # Process each bit
-            if crc & 0x8000:  # If the leftmost bit is set
-                crc = (crc << 1) ^ poly
-            else:
-                crc <<= 1
-            crc &= 0xFFFF  # Ensure crc stays within 16 bits
-
-    # HDLC AX.25 uses a bitwise inversion of the CRC before appending it to the frame
-    crc ^= 0xFFFF
-    # Return the FCS as 2 bytes (big-endian)
-    return crc.to_bytes(2,byteorder="big")  # Little-endian is used for AX.25
-
 def encodeTx(byteInput: bytes,packetNo : int,totalPacket : int,packetType : Literal["image","text","json"]) -> bytes:
     typeLookup = {
         "image" : 0,
@@ -36,7 +20,6 @@ def encodeTx(byteInput: bytes,packetNo : int,totalPacket : int,packetType : Lite
     packet_type = typeLookup[packetType].to_bytes(1,byteorder='big')
     packet_length = len(byteInput).to_bytes(2,byteorder='big')
     output = packet_num + packet_type + packet_total + packet_length + byteInput
-    # output += generateFCS(output)
     output += zlib.crc32(output).to_bytes(4,"big")
     return output
 
@@ -61,7 +44,6 @@ def decodeTx(byteInput: bytes) -> dict[Literal[
         
         if (len(byteInput) >= 9 + packet_size + 4):
             packet_content = byteInput[9:-4]
-            # checkFCS = generateFCS(byteInput[:-2])
             checkFCS = zlib.crc32(byteInput[:-4]).to_bytes(4,"big")
             fcs = byteInput[-4:]
             # print(packet_num,packetTypeLookup[packet_type],total_packet_count,packet_size,packet_content,fcs == checkFCS)

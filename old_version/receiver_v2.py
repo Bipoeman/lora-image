@@ -3,7 +3,7 @@ from serial import *
 import os
 from util import *
 
-ser = Serial("COM4",timeout=5,baudrate=9600)
+ser = Serial("COM8",timeout=5,baudrate=9600)
 output_file = "output.jpg"
 try:
     ser.close()
@@ -51,6 +51,8 @@ while True:
                 total_read = b''
                 if (decoded['packet_num'] + 1) == decoded['total_packet_count']:
                     done = True
+                    reply_message = encodeTx(f"ACK{last_frame_receive}", 0, 1, 'text')
+                    ser.write(reply_message)  # Acknowledge final packet
         except :
             pass
 

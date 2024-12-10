@@ -8,7 +8,7 @@ import zlib
     
 
 time.sleep(2)
-ser = Serial("COM9",baudrate=9600,timeout=5)
+ser = Serial("COM44",baudrate=9600,timeout=5)
 
 with open("image.jpg",'rb') as imageFile:
     time.sleep(1)

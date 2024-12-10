@@ -3,7 +3,7 @@ from serial import *
 import os
 from util import *
 
-ser = Serial("COM4",timeout=5,baudrate=9600)
+ser = Serial("COM45",timeout=5,baudrate=9600)
 output_file = "output.jpg"
 try:
     ser.close()
